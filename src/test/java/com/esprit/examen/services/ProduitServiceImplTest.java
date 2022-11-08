@@ -1,7 +1,6 @@
 package com.esprit.examen.services;
 //import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -57,20 +56,19 @@ import lombok.extern.slf4j.Slf4j;
     };
 
     @Test
-void getAllProduitTest()
+void  getAllProduitTest()
     {
         List<Produit> Produitlist = new ArrayList<Produit>() {
 
             {
-              add(new Produit(3L, null, null, 1900, null, null, null));
+                add(new Produit(3L, null, null, 1900, null, null, null));
                 add(new Produit(5L, null, null, 1600, null, null, null));
                 add(new Produit(8L, null, null, 1590, null, null, null));
             }};
 
-
+       assertTrue(Produitlist.size()>0);
         Mockito.when(produitServiceService.retrieveAllProduits()).thenReturn(Produitlist);
-        List<Produit> factureList = produitServiceService.retrieveAllProduits();
-        System.out.println(" good job ❤ ");
+         List<Produit> factureList = produitServiceService.retrieveAllProduits();
     }
 
 
