@@ -1,7 +1,6 @@
 package com.esprit.examen.controllers;
 
 import java.util.List;
-
 import com.esprit.examen.entitydto.CategorieProduitDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,14 +31,11 @@ public class CategorieProduitController {
 
 	}
 
-
 	@GetMapping("/retrieve-categorieProduit/{categorieProduit-id}")
 	@ResponseBody
 	public CategorieProduit retrieveCategorieProduit(@PathVariable("categorieProduit-id") Long categorieProduitId) {
 		return categorieProduitService.retrieveCategorieProduit(categorieProduitId);
 	}
-
-
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
 	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduitDto cp) {
