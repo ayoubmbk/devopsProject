@@ -99,6 +99,13 @@
 			<artifactId>mockito-junit-jupiter</artifactId>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>Nexus_Devops</id>
+			<name>Nexus_Devops</name>
+			<url>http://172.10.0.140:8081/repository/Nexus_Devops/</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>

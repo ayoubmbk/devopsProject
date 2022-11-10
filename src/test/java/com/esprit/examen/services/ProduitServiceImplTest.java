@@ -5,30 +5,16 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.Optional;
-
-//import net.bytebuddy.asm.Advice;
-//import net.bytebuddy.implementation.bind.annotation.This;
-//import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-//import org.junit.runner.RunWith;
-//import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-
 import org.springframework.boot.test.context.SpringBootTest;
-
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import com.esprit.examen.entities.Produit;
-//import com.esprit.examen.entities.Stock;
-//import com.esprit.examen.repositories.CategorieProduitRepository;
 import com.esprit.examen.repositories.ProduitRepository;
-//import com.esprit.examen.repositories.StockRepository;
-//import com.esprit.examen.services.ProduitServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,9 +52,9 @@ void  getAllProduitTest()
                 add(new Produit(8L, null, null, 1590, null, null, null));
             }};
 
-       assertTrue(Produitlist.size()>0);
+        assertTrue(Produitlist.size()>0);
         Mockito.when(produitServiceService.retrieveAllProduits()).thenReturn(Produitlist);
-         List<Produit> factureList = produitServiceService.retrieveAllProduits();
+        List<Produit> factureList = produitServiceService.retrieveAllProduits();
     }
 
 
@@ -83,6 +69,7 @@ void  getAllProduitTest()
         //assert
         assertEquals(1L, p.getIdProduit());
     }
+
     public void delete() {
 
         Produit p = produitRepository.findById(1L).get();
