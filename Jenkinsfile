@@ -31,13 +31,6 @@ pipeline {
                 sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
             }
         }
-        stage('Building our image') {
-            steps {
-                script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                }
-            }
-        }
     stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker", url: ""]) {
