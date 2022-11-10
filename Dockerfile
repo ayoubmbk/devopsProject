@@ -1,4 +1,5 @@
-FROM openjdk:8-jre-alpine
-ADD target/tpAchatProject-2.0.1.jar tpAchatProject-2.0.1.jar
-EXPOSE 8089
-ENTRYPOINT ["java", "-jar", "tpAchatProject-2.0.1.jar"]
+FROM openjdk:8-jdk-alpine
+EXPOSE 8080
+ARG JAR_FILE=target/*.jar
+ADD ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
