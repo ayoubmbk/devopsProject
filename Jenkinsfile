@@ -38,15 +38,15 @@ pipeline {
                 }
             }
         }
-        stage('Deploy our image') {
-            steps {
-                script {
-                    docker.withRegistry('', registryCredential) {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }
+    stage('Docker Build and Push') {
+       steps {
+         withDockerRegistry([credentialsId: "docker", url: ""]) {
+           sh 'printenv'
+           sh 'sudo docker build -t ayoubmabrouk1/ci:latest .'
+           sh 'docker push ayoubmabrouk1/ci:latest '
+         }
+       }
+     }
         stage('Cleaning up') {
             steps {
                 bat "docker rmi $registry:$BUILD_NUMBER"
