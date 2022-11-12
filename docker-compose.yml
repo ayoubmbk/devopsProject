@@ -21,7 +21,7 @@ services:
     build:
       context: .
     container_name: ci-spring
-    image: ayoubmabrouk1/ci:latest
+    image: ayoubmabrouk1/achat
     ports:
       - "8089:8089"
     networks:
@@ -41,4 +41,4 @@ networks:
     name: ci-network
 
 volumes:
-  dbvol
+  dbvol:
