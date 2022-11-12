@@ -1,4 +1,8 @@
 pipeline {
+  environment {
+    registry = "ayoubmabrouk1/ci-front"
+    registryCredential = 'docker'
+  }
     agent any
     stages {
         stage('Cloning Project from Git') {
