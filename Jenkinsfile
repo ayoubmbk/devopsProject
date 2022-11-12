@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "ayoubmabrouk1/ci"
+    registry = "ayoubmabrouk1/achat"
     registryCredential = 'docker'
   }
     agent any
@@ -39,8 +39,8 @@ pipeline {
        steps {
          withDockerRegistry([credentialsId: "docker", url: ""]) {
            sh 'printenv'
-           sh 'sudo docker build -t ayoubmabrouk1/ci:latest .'
-           sh 'docker push ayoubmabrouk1/ci:latest '
+           sh 'sudo docker build -t ayoubmabrouk1/achat .'
+           sh 'docker push ayoubmabrouk1/achat '
          }
        }
      }
