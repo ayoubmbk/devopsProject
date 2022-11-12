@@ -45,7 +45,6 @@ pipeline {
                 sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
-    }
  stage('Sending Mail'){
             steps{
                 mail ( body: 'Congratulations! your DevOps project pipeline was completed succesfully!', subject: 'Pipeline', to: 'ayoubmabrouk65@gmail.com')
