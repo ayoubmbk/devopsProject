@@ -44,6 +44,11 @@ pipeline {
          }
        }
      }
+     stage('Cleaning up') {
+                  steps {
+                      sh "docker rmi $registry:latest"
+                  }
+              }
    stage('DockerCompose') {
 
                           steps {
