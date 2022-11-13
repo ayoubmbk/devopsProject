@@ -15,17 +15,19 @@ services:
   ci-db:
     container_name: ci-db
     image: mysql:8.0
+    env_file:
+      - .env
     networks:
       - ci-network
     environment:
       - MYSQL_USER=new_user
       - MYSQL_PASSWORD=password
-      - MYSQL_DATABASE=achatdb
+      - MYSQL_DATABASE=TpAchatProjectdb
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - dbvol:/var/lib/mysql
     ports:
-      - "3307:3307"
+      - "3306:3307"
     restart: always
 
   ci-app:
@@ -33,6 +35,8 @@ services:
       context: .
     container_name: ci-spring
     image: ayoubmabrouk1/achat:latest
+    env_file:
+      - .env
     ports:
       - "8089:8089"
     networks:
@@ -43,8 +47,8 @@ services:
       - MYSQL_HOST=ci-db
       - MYSQL_USERNAME=new_user
       - MYSQL_PASSWORD=password
-      - MYSQL_DATABASE=achatdb
-      - MYSQL_PORT=3307
+      - MYSQL_DATABASE=TpAchatProjectdb
+      - MYSQL_PORT=3306
 
 
 networks:
