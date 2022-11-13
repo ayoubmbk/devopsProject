@@ -1,14 +1,5 @@
 version: "3.8"
 services:
-  ci-app-front:
-    build:
-      context: .
-    container_name: ci-angular
-    image: ayoubmabrouk1/ci-front:latest
-    ports:
-      - "8888:80"
-    networks:
-      - ci-network
 
   mysql-db:
     image: mysql:5.7
@@ -36,7 +27,7 @@ services:
   springboot-be:
     depends_on:
       - mysql-db
-    image: ayoubmabrouk1/ci:latest
+    image: ayoubmabrouk1/achat:latest
     container_name: springboot-be
     env_file: ./.env
     environment:
@@ -51,9 +42,5 @@ services:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
     restart: on-failure
 
-networks:
-  ci-network:
-    name: ci-network
-    
 volumes:
   db:
