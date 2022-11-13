@@ -30,18 +30,11 @@ pipeline {
                         sh "mvn clean package "
                     }
                 }
-       stage('Nexus'){
-               steps{
-                   nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'target/tpAchatProject-1.0.jar', type: 'jar']],
-                   credentialsId: 'nexus',
-                   groupId: 'com.esprit.examen',
-                   nexusUrl: '172.10.0.140:8080',
-                   nexusVersion: 'nexus3',
-                   protocol: 'http',
-                   repository: 'Nexus-DevOps',
-                   version: '1.0'
-               }
-           }
+        stage("DEPLOY with Nexus") {
+            steps {
+                sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+            }
+        }
     stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker", url: ""]) {
